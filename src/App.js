@@ -22,7 +22,6 @@ class App extends Component {
       <Router>
         {/* This will load the Navbar to all the Components */}
         <NavHeader />
-
         {/* Route to Components */}
         <Route exact path="/" component={Home} />
         <Route path="/dataprocessing" component={DataProcessing} />
