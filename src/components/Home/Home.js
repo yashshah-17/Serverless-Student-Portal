@@ -6,6 +6,10 @@ class Home extends Component {
     onlineUsers: []
   }
   async componentDidMount() {
+    if (localStorage.getItem("organization") === null) {
+      this.props.history.push("/login");
+    }
+    else{
     let body = {
       "organization": localStorage.getItem("organization")
     }
@@ -18,6 +22,7 @@ class Home extends Component {
           onlineUsers: resData
         })
       })
+    }
   }
 
   render() {
