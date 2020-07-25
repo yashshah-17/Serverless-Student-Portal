@@ -29,7 +29,6 @@ updateText1 = (text) => {this.setState({ text })}
     return (
       <Router>
         {/* This will load the Navbar to all the Components */}
-        
 
         {/* Route to Components */}
         <Route exact path="/" component={Home} />
