@@ -18,30 +18,26 @@ export default function() {
 
   const handleComplete = (err, confirmation) => {
     if (err) {
-      alert('Bot conversation failed')
+      alert('Bot conversation failed, please check your network and try again!')
       return;
     }
-
-    alert('Success: ' + JSON.stringify(confirmation, null, 2));
-    return 'Trip booked. Thank you! what would you like to do next?';
+    else {
+      alert('Success: ' + JSON.stringify(confirmation, null, 2));
+      return 'Trip booked. Thank you! what would you like to do next?';
+    }
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="App-title">Welcome to ChatBot Demo</h1>
-      </header>
       <ChatBot
         userInput="book ticket"
-        title="My Bot"
+        title="Virtual Help"
         theme={myTheme}
         botName="BookTrip_dev"
-        welcomeMessage="Welcome, how can I help you today?"
+        welcomeMessage="Welcome, which module can I help you with?"
         onComplete={handleComplete}
-        clearOnComplete={true}
+        clearOnComplete={false}
         textEnabled={true}
         conversationModeOn={true}
       />
-    </div>
   );
 }

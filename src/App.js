@@ -13,7 +13,7 @@ import LoginSecond from "./components/ProfileManagement/Login/LoginSecond";
 import Signup from "./components/ProfileManagement/Signup/Signup";
 
 // Importing CSS
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/style/main.css";
 
 class App extends Component {
