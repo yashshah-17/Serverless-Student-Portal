@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // Importing the required components
 import NavHeader from "./components/Navbar/NavHeader";
+import NavHeader2 from "./components/Navbar/NavHeader2";
 import Home from "./components/Home/Home";
 import DataProcessing from "./components/DataProcessing/DataProcessing";
 import MachineLearning from "./components/MachineLearning/MachineLearning";
@@ -17,11 +18,18 @@ import Signup from "./components/ProfileManagement/Signup/Signup";
 import "./assets/style/main.css";
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {text: "Initial Text"}
+    this.updateText1 = this.updateText1
+}
+updateText1 = (text) => {this.setState({ text })}
+  
   render() {
     return (
       <Router>
         {/* This will load the Navbar to all the Components */}
-        <NavHeader />
+        
 
         {/* Route to Components */}
         <Route exact path="/" component={Home} />
@@ -30,7 +38,7 @@ class App extends Component {
         <Route path="/systemchat" component={ChatWithLex} />
         <Route path="/studentchat" component={StudentChat} />
         <Route path="/login" component={Login} />
-        <Route path="/loginSecond" component={LoginSecond} />
+        <Route path="/loginSecond"  component={LoginSecond} />
         <Route path="/signup" component={Signup} />
       </Router>
     );
