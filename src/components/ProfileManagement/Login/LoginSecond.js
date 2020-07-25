@@ -8,7 +8,7 @@ import './Login.css'
 
 import axios from 'axios';
 
-class Login extends Component {
+class LoginSecond extends Component {
   state = {
     email: '',
     password: '',
@@ -107,7 +107,7 @@ login = () =>{
           localStorage.setItem("question",resData.question)
           localStorage.setItem("questionID",resData.questionID)
           localStorage.setItem("email",resData.email)
-          this.props.history.push("/loginSecond");
+          this.props.history.push("/signup");
         }
       })
 }
@@ -167,4 +167,4 @@ login = () =>{
     );
   }
 }
-export default Login;
+export default LoginSecond;

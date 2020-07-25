@@ -9,6 +9,7 @@ import MachineLearning from "./components/MachineLearning/MachineLearning";
 import ChatWithLex from "./components/Chat/ChatWithLex";
 import StudentChat from "./components/Chat/StudentChat";
 import Login from "./components/ProfileManagement/Login/Login";
+import LoginSecond from "./components/ProfileManagement/Login/LoginSecond";
 import Signup from "./components/ProfileManagement/Signup/Signup";
 
 // Importing CSS
@@ -29,6 +30,7 @@ class App extends Component {
         <Route path="/systemchat" component={ChatWithLex} />
         <Route path="/studentchat" component={StudentChat} />
         <Route path="/login" component={Login} />
+        <Route path="/loginSecond" component={LoginSecond} />
         <Route path="/signup" component={Signup} />
       </Router>
     );
