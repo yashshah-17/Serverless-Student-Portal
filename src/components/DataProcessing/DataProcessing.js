@@ -52,7 +52,12 @@ class DataProcessing extends Component {
 
     const fontSizeMapper = (word) => Math.log2(word.value) * 30;
 
-    return <WordCloud data={data} fontSizeMapper={fontSizeMapper} />;
+    return (
+      <React.Fragment>
+        <NavHeader2 history={this.props.history} />
+        <WordCloud data={data} width={1500} fontSizeMapper={fontSizeMapper} />
+      </React.Fragment>
+    );
   }
 }
 
