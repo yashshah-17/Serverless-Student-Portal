@@ -12,13 +12,13 @@ class StudentChat extends React.Component {
       messages: [],
       inputText: ""
     };
-    this.university = localStorage.getItem("universityName") || "dalhousie";
-    this.username =  localStorage.getItem("username") || "annonymous";
+    this.university = localStorage.getItem("organization") || "dalhousie";
+    this.username =  localStorage.getItem("firstName") || "annoy";
     this.intervalVar = null;
   }
 
   componentDidMount() {
-    this.intervalVar = setInterval(this.receive, 4000);
+    this.intervalVar = setInterval(this.receive, 1000);
   }
 
   componentWillUnmount() {
@@ -67,9 +67,15 @@ class StudentChat extends React.Component {
     this.setState({inputText: event.target.value})
   }
 
+  keyEvent = (event) => {
+    if(event.key === 'Enter') {
+        this.sendMessage()        
+    }
+  }
+
   render() {
     return (<React.Fragment>
-      <NavHeader></NavHeader>
+      <h1>{this.university}</h1>
       <ChatFeed
         messages={this.state.messages}
         hasInputField={false}
@@ -78,11 +84,12 @@ class StudentChat extends React.Component {
         bubbleStyles={
           {
             text: {
-              fontSize: 16
+              fontSize: 20
             },
             chatbubble: {
-              borderRadius: 70,
+              borderRadius: 20,
               padding: 10,
+              margin: 10,
               backgroundColor: "#5BC236"
             }
           }
@@ -93,7 +100,8 @@ class StudentChat extends React.Component {
       <br/>
       <div className="footer">
         <InputGroup size="lg">
-          <FormControl aria-label="Large" aria-describedby="inputGroup-sizing-sm" onChange={this.textChange} value={this.state.inputText}/>
+          <FormControl aria-label="Large" aria-describedby="inputGroup-sizing-sm" 
+          onChange={this.textChange} value={this.state.inputText} onKeyDown={this.keyEvent}/>
           <InputGroup.Append>
           <Button variant="primary" onClick={this.sendMessage}>Send</Button>
            </InputGroup.Append>
