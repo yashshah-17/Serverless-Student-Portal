@@ -269,7 +269,7 @@ class Signup extends Component {
                   onChange={e => this.onValueChange(e, 'question')}
                 >
                   <MenuItem value={1}>What is your favorite dish?</MenuItem>
-                  <MenuItem value={2}>What was your favorite game?</MenuItem>
+                  <MenuItem value={2}>What is your favorite game?</MenuItem>
                   <MenuItem value={3}>What is your crush name? </MenuItem>
                 </Select>
               </FormControl>
@@ -279,7 +279,7 @@ class Signup extends Component {
                 floatinglabeltext="Answer"
                 type="text"
                 error={this.state.answerError !== null}
-                helperText={this.state.answer}
+                helperText={this.state.answerError}
                 onChange={e => this.onValueChange(e, 'answer')}
                 id="standard-basic" required label="Answer"
                 variant="outlined"
