@@ -75,6 +75,7 @@ class StudentChat extends React.Component {
 
   render() {
     return (<React.Fragment>
+      <NavHeader history={this.props.history} />
       <h1>{this.university}</h1>
       <ChatFeed
         messages={this.state.messages}

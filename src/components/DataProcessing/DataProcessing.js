@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import WordCloud from "react-d3-cloud";
-import NavHeader2 from "../Navbar/NavHeader2";
+import NavHeader from "../Navbar/NavHeader";
 
 class DataProcessing extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class DataProcessing extends Component {
 
     return (
       <React.Fragment>
-        <NavHeader2 history={this.props.history} />
+        <NavHeader history={this.props.history} />
         <div className="container">
           <br />
           <h1 align="center">Welcome to Visualize the Word Cloud</h1>

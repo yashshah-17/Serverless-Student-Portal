@@ -28,6 +28,8 @@ export default function () {
   };
 
   return (
+    <div>
+     <NavHeader history={this.props.history} />
     <ChatBot
       userInput="book ticket"
       title="Virtual Help"
@@ -39,5 +41,6 @@ export default function () {
       textEnabled={true}
       conversationModeOn={true}
     />
+    </div>
   );
 }

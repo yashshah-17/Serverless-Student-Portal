@@ -1,7 +1,26 @@
 // Navbar code goes here
 import React, { Component } from "react";
 import "./NavHeader.css";
+import Button from '@material-ui/core/Button';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 class NavHeader extends Component {
+
+  logout = () => {
+    let body = {
+        "email": localStorage.getItem("email")      
+    }
+    axios.post(`https://pjy23k2623.execute-api.us-east-1.amazonaws.com/default/serverless-logout`, body)
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+            let resData = res.data;
+            localStorage.clear();
+            this.props.history.push("/login");
+        })
+}
+
   render() {
     return (
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -50,6 +69,11 @@ class NavHeader extends Component {
                 Talk to our chatbot
               </a>
             </li>
+
+            <li class="nav-item active">
+            <Button color="secondary" onClick={this.logout} >Log Out</Button>
+            </li>
+            
           </ul>
         </div>
       </nav>

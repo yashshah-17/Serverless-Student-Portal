@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import NavHeader2 from "../Navbar/NavHeader2";
+import NavHeader from "../Navbar/NavHeader";
 class Home extends Component {
   state = {
     onlineUsers: [],
@@ -31,7 +31,7 @@ class Home extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavHeader2 history={this.props.history} />
+        <NavHeader history={this.props.history} />
         <header className="App-header">
           <p>Online users.</p>
           <div>

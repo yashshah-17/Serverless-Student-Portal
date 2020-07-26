@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import { useHistory } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 import './Login.css'
-import NavHeader from "../../Navbar/NavHeader";
+import NavHeader2 from "../../Navbar/NavHeader2";
 import axios from 'axios';
 
 class LoginSecond extends Component {
@@ -51,6 +51,7 @@ class LoginSecond extends Component {
     render() {
         return (
             <React.Fragment>
+                <NavHeader2 />
                 <div  className="App-content">
                 <div style={{ fontSize: "30px",paddingLeft:"475px", paddingTop: "30px",margin:"auto",width:"50%" }}>
                     Login Form

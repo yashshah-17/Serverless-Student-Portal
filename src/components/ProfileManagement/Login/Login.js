@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavHeader from "../../Navbar/NavHeader";
+import NavHeader2 from "../../Navbar/NavHeader2";
 import { Row, Col, Container } from 'react-bootstrap';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -19,6 +19,14 @@ class Login extends Component {
     disabled: true,
     credError: null
 
+  }
+
+   componentDidMount() {
+    if (localStorage.getItem("organization") === null) {
+      
+    } else{
+      this.props.history.push("/");
+    }
   }
 
   isSubmitDisabled = () => {
@@ -127,7 +135,7 @@ class Login extends Component {
     return (
       
       <React.Fragment>
-        <NavHeader />
+        <NavHeader2 />
         <div className="App-content" >
           <div style={{ fontSize: "30px",paddingLeft:"475px", paddingTop: "30px",margin:"auto",width:"50%" }}>
             Login Form
