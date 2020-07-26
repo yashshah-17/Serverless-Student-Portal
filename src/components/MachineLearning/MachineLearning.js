@@ -16,7 +16,7 @@ function MachineLearning() {
       <br/><br/><br/>
       <center>
         <form method="post" action="https://us-central1-instant-grove-279600.cloudfunctions.net/uploadFile" enctype="multipart/form-data">
-            <input type="file" id="file" name="file"></input>
+            <input type="file" id="file" name="file" required></input>
             <input type="submit" className="btn btn-success" value="upload"></input>
         </form>
       </center>
