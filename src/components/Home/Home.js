@@ -4,7 +4,7 @@ function Home() {
   return (
     <React.Fragment>
       <header className="App-header">
-        <p>This is Home.</p>
+        <p>This is Home page.</p>
       </header>
     </React.Fragment>
   );
