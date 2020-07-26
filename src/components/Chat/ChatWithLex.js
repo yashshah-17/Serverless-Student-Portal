@@ -29,7 +29,7 @@ export default function () {
 
   return (
     <div>
-     <NavHeader history={this.props.history} />
+     <NavHeader  />
     <ChatBot
       userInput="book ticket"
       title="Virtual Help"
