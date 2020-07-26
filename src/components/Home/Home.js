@@ -15,7 +15,7 @@ class Home extends Component {
       };
       axios
         .post(
-          `https://ph3t9297m6.execute-api.us-east-1.amazonaws.com/default/serverless-onlineUsers`+"?timestamp="+Date.now(),
+          `https://cors-anywhere.herokuapp.com//https://ph3t9297m6.execute-api.us-east-1.amazonaws.com/default/serverless-onlineUsers`+"?timestamp="+Date.now(),
           body
         )
         .then((res) => {
