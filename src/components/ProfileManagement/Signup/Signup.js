@@ -173,7 +173,8 @@ class Signup extends Component {
       "secondName": this.state.secondName,
       "organization": this.state.organization,
       "questionID": this.state.question,
-      "answer": this.state.answer
+      "answer": this.state.answer,
+      "timestamp":Date.now()
     }
 
     axios.post(`https://us-central1-serverless-proj-284222.cloudfunctions.net/serverless-signup`, body)
