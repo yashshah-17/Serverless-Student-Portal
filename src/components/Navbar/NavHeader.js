@@ -18,19 +18,19 @@ class NavHeader extends Component {
         <li class="nav-item active">
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="/StudentChat">Chat</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="/machinelearning">Machine Learning</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="/dataprocessing">Data Processing</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="/systemchat">Talk to our chatbot</a>
         </li>
       </ul>
