@@ -34,7 +34,7 @@ class LoginSecond extends Component {
             "answer": this.state.answer,
             "timestamp":Date.now()
         }
-        axios.post(` https://knat64zukj.execute-api.us-east-1.amazonaws.com/default/ServerlessSignInSecond`, body)
+        axios.post(` https://cors-anywhere.herokuapp.com//https://knat64zukj.execute-api.us-east-1.amazonaws.com/default/ServerlessSignInSecond`, body)
             .then(res => {
                 console.log(res);
                 console.log(res.data);

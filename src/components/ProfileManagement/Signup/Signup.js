@@ -177,7 +177,7 @@ class Signup extends Component {
       "timestamp":Date.now()
     }
 
-    axios.post(`https://us-central1-serverless-proj-284222.cloudfunctions.net/serverless-signup`, body)
+    axios.post(`https://cors-anywhere.herokuapp.com//https://us-central1-serverless-proj-284222.cloudfunctions.net/serverless-signup`, body)
       .then(res => {
         console.log(res);
         console.log(res.data);
