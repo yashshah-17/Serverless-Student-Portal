@@ -19,7 +19,6 @@ function uploadfile () {
 
 function MachineLearning() {
 
-
   return (
     <div>
        <NavHeader />
