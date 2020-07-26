@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
-
-import { Row, Col, Container } from 'react-bootstrap';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { useHistory } from 'react-router-dom';
-import { withRouter } from "react-router-dom";
 import '../Login/Login.css';
-import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-
+import NavHeader from "../../Navbar/NavHeader";
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 
 class Signup extends Component {
   state = {
@@ -21,14 +17,16 @@ class Signup extends Component {
     password: '',
     firstName: '',
     secondName: '',
-    question:'1',
-    answer:'',
+    organization: '',
+    question: '1',
+    answer: '',
     nameError: null,
     emailError: null,
     passwordError: null,
     firstNameError: null,
     secondNameError: null,
     answerError: null,
+    organizationError: null,
     disabled: true,
     credError: null
 
@@ -171,10 +169,11 @@ class Signup extends Component {
     let body = {
       "email": this.state.email,
       "password": this.state.password,
-      "firstName":this.state.firstName,
-      "secondName":this.state.secondName,
-      "questionID":this.state.question,
-      "answer":this.state.answer
+      "firstName": this.state.firstName,
+      "secondName": this.state.secondName,
+      "organization": this.state.organization,
+      "questionID": this.state.question,
+      "answer": this.state.answer
     }
 
     axios.post(`https://us-central1-serverless-proj-284222.cloudfunctions.net/serverless-signup`, body)
@@ -182,12 +181,13 @@ class Signup extends Component {
         console.log(res);
         console.log(res.data);
         let resData = res.data;
-        if (resData ) {
+        if (resData) {
+          this.props.history.push("/login");
+          
+        } else {
           this.setState({
             credError: true
           })
-        } else {
-          this.props.history.push("/login");
         }
       })
   }
@@ -195,7 +195,7 @@ class Signup extends Component {
   render() {
     return (
       <React.Fragment>
-
+        <NavHeader />
         <div className="App-content" >
           <div style={{ fontSize: "30px", paddingLeft: "475px", paddingTop: "30px", margin: "auto", width: "50%" }}>
             Sign up Form
@@ -247,6 +247,16 @@ class Signup extends Component {
                 helperText={this.state.secondNameError}
                 onChange={e => this.onValueChange(e, 'secondName')}
                 id="standard-basic" required label="Second Name"
+                variant="outlined"
+                onBlur={this.isSubmitDisabled} /></div>
+            <div className="space">
+              <TextField className="input-class"
+                floatinglabeltext="Organization"
+                type="text"
+                error={this.state.organizationError !== null}
+                helperText={this.state.organizationError}
+                onChange={e => this.onValueChange(e, 'organization')}
+                id="standard-basic" required label="Organization"
                 variant="outlined"
                 onBlur={this.isSubmitDisabled} /></div>
             <div>

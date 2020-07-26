@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import NavHeader from "../../Navbar/NavHeader";
 import { Row, Col, Container } from 'react-bootstrap';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -84,6 +84,10 @@ class Login extends Component {
     this.setState(nextState);
   }
 
+  updateText = (text) =>{
+    this.setState({text})
+  }
+
   login = () => {
     console.log(this.state.email)
     // const history = useHistory();
@@ -108,15 +112,21 @@ class Login extends Component {
           localStorage.setItem("question", resData.question)
           localStorage.setItem("questionID", resData.questionID)
           localStorage.setItem("email", resData.email)
+          localStorage.setItem("firstName", resData.firstName)
+          localStorage.setItem("secondName", resData.secondName)
+          localStorage.setItem("organization", resData.organization)
           this.props.history.push("/loginSecond");
         }
       })
   }
 
+  
   render() {
+    
     return (
+      
       <React.Fragment>
-
+        <NavHeader />
         <div className="App-content" >
           <div style={{ fontSize: "30px",paddingLeft:"475px", paddingTop: "30px",margin:"auto",width:"50%" }}>
             Login Form
@@ -150,7 +160,7 @@ class Login extends Component {
                   onBlur={this.isSubmitDisabled} /></div>
             </div>
             <div className="button-class">
-              <Button disabled={this.state.disabled} onClick={this.login} variant="contained" color="secondary">
+              <Button disabled={this.state.disabled} onClick={this.login}  variant="contained" color="secondary">
                 Login
               </Button>
             </div>
