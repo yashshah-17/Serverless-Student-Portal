@@ -34,7 +34,19 @@ class DataProcessing extends Component {
     return (
       <React.Fragment>
         <NavHeader2 history={this.props.history} />
-        <WordCloud data={data} width={1200} fontSizeMapper={fontSizeMapper} />
+        <div className="container">
+          <br />
+          <h1 align="center">Welcome to Visualize the Word Cloud</h1>
+          <br />
+          <hr />
+          <br />
+          <WordCloud
+            data={data}
+            width={1200}
+            height={500}
+            fontSizeMapper={fontSizeMapper}
+          />
+        </div>
       </React.Fragment>
     );
   }
