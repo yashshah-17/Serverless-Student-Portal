@@ -2,6 +2,7 @@ import React from "react";
 import { ChatFeed, Message } from 'react-chat-ui'
 import "./StudentChat.css"
 import { InputGroup, FormControl, Button } from "react-bootstrap";
+import NavHeader from "../Navbar/NavHeader";
 
 class StudentChat extends React.Component {
 
@@ -68,6 +69,7 @@ class StudentChat extends React.Component {
 
   render() {
     return (<React.Fragment>
+      <NavHeader></NavHeader>
       <ChatFeed
         messages={this.state.messages}
         hasInputField={false}

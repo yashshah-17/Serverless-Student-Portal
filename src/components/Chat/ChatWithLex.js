@@ -2,6 +2,8 @@ import React from 'react';
 import Amplify from 'aws-amplify';
 import { ChatBot, AmplifyTheme } from 'aws-amplify-react';
 import awsconfig from '../../aws-exports';
+import NavHeader from "../Navbar/NavHeader";
+
 
 Amplify.configure(awsconfig);
 
@@ -28,16 +30,22 @@ export default function() {
   }
 
   return (
-      <ChatBot
-        userInput="book ticket"
-        title="Virtual Help"
-        theme={myTheme}
-        botName="BookTrip_dev"
-        welcomeMessage="Welcome, which module can I help you with?"
-        onComplete={handleComplete}
-        clearOnComplete={false}
-        textEnabled={true}
-        conversationModeOn={true}
-      />
+    <div>
+      <NavHeader></NavHeader>
+      <div className="container">
+        <br/><br/>
+        <ChatBot
+          userInput="book ticket"
+          title="Virtual Help"
+          theme={myTheme}
+          botName="BookTrip_dev"
+          welcomeMessage="Welcome, which module can I help you with?"
+          onComplete={handleComplete}
+          clearOnComplete={false}
+          textEnabled={true}
+          conversationModeOn={true}
+        />
+        </div>
+      </div>
   );
 }
