@@ -51,7 +51,6 @@ class LoginSecond extends Component {
     render() {
         return (
             <React.Fragment>
-                <NavHeader />
                 <div  className="App-content">
                 <div style={{ fontSize: "30px",paddingLeft:"475px", paddingTop: "30px",margin:"auto",width:"50%" }}>
                     Login Form
