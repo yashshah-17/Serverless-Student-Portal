@@ -1,31 +1,43 @@
 // Navbar code goes here
 import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-
+import "./NavHeader.css"
 class NavHeader extends Component {
   
 
   render() {
 
     return (
-      <React.Fragment>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton edge="start"  color="inherit" aria-label="menu">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Learning Management System</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            </IconButton>
-            <Typography variant="h6" >
-              Serverless Application
-            </Typography>
-   
-          </Toolbar>
-        </AppBar>
-      </React.Fragment>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/StudentChat">Chat</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/machinelearning">Machine Learning</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/dataprocessing">Data Processing</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/systemchat">Talk to our chatbot</a>
+        </li>
+      </ul>
+
+    
+  </div>
+</nav>
     );
   }
 }
