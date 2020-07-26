@@ -1,7 +1,7 @@
-import React from 'react';
-import Amplify from 'aws-amplify';
-import { ChatBot, AmplifyTheme } from 'aws-amplify-react';
-import awsconfig from '../../aws-exports';
+import React from "react";
+import Amplify from "aws-amplify";
+import { ChatBot, AmplifyTheme } from "aws-amplify-react";
+import awsconfig from "../../aws-exports";
 
 Amplify.configure(awsconfig);
 
@@ -10,34 +10,34 @@ const myTheme = {
   ...AmplifyTheme,
   sectionHeader: {
     ...AmplifyTheme.sectionHeader,
-    backgroundColor: '#ff6600'
-  }
+    backgroundColor: "#ff6600",
+  },
 };
 
-export default function() {
-
+export default function () {
   const handleComplete = (err, confirmation) => {
     if (err) {
-      alert('Bot conversation failed, please check your network and try again!')
+      alert(
+        "Bot conversation failed, please check your network and try again!"
+      );
       return;
+    } else {
+      alert("Success: " + JSON.stringify(confirmation, null, 2));
+      return "Trip booked. Thank you! what would you like to do next?";
     }
-    else {
-      alert('Success: ' + JSON.stringify(confirmation, null, 2));
-      return 'Trip booked. Thank you! what would you like to do next?';
-    }
-  }
+  };
 
   return (
-      <ChatBot
-        userInput="book ticket"
-        title="Virtual Help"
-        theme={myTheme}
-        botName="BookTrip_dev"
-        welcomeMessage="Welcome, which module can I help you with?"
-        onComplete={handleComplete}
-        clearOnComplete={false}
-        textEnabled={true}
-        conversationModeOn={true}
-      />
+    <ChatBot
+      userInput="book ticket"
+      title="Virtual Help"
+      theme={myTheme}
+      botName="BookTrip_dev"
+      welcomeMessage="Welcome, which module can I help you with?"
+      onComplete={handleComplete}
+      clearOnComplete={false}
+      textEnabled={true}
+      conversationModeOn={true}
+    />
   );
 }
