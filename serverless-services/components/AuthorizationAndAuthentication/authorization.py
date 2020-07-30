@@ -1,5 +1,6 @@
 #authorization
 
+#signin first
 import pymysql
 import requests
 import json
@@ -38,6 +39,7 @@ def hello_world(request):
             
         return json.dumps(response)
 		
+#signin second        
 import json
 import pymysql
 
@@ -67,7 +69,8 @@ def lambda_handler(event, context):
                 'body': json.dumps(False)
             }
 			
-			
+
+#online users			
 import json
 import pymysql
 
@@ -92,7 +95,8 @@ def lambda_handler(event, context):
             'statusCode': 200,
             'body': json.dumps(online)
         }
-        
+
+#logout      
 import json
 import pymysql
 
