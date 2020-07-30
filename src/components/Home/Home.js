@@ -10,12 +10,14 @@ class Home extends Component {
       this.props.history.push("/login");
     } else {
       let body = {
-        "organization": localStorage.getItem("organization"),
-        "timestamp":Date.now()
+        organization: localStorage.getItem("organization"),
+        timestamp: Date.now()
       };
       axios
         .post(
-          `https://ph3t9297m6.execute-api.us-east-1.amazonaws.com/default/serverless-onlineUsers`+"?timestamp="+Date.now(),
+          `https://ph3t9297m6.execute-api.us-east-1.amazonaws.com/default/serverless-onlineUsers` +
+          "?timestamp=" +
+          Date.now(),
           body
         )
         .then((res) => {
