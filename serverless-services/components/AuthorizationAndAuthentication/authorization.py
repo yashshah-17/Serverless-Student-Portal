@@ -14,14 +14,16 @@ def hello_world(request):
     sign_in_details['email'] = request_json['email']
     sign_in_details['password'] = request_json['password']
     sign_in_details['returnSecureToken']=True;
-    url="https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAj4IznEqz1x1UCb5SohK4Kh9pYEWhlvx8"
-    x = requests.post(url, data = json.dumps(sign_in_details))
-    response = json.loads(x.text)
+    #firebase sign in
+    firebase="https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAj4IznEqz1x1UCb5SohK4Kh9pYEWhlvx8"
+    firebasesignin = requests.post(firebase, data = json.dumps(sign_in_details))
+    response = json.loads(firebasesignin.text)
     if "error" in response:
         print("error")
         return x.text
     else:
         print(response)
+        #question retrieval
         cursor.execute("select question,u.questionID from userQuestion u, securityQuestion q where u.questionID = q.questionID and email = %s;",
         (sign_in_details['email']))
         result = cursor.fetchone()
@@ -51,6 +53,7 @@ def lambda_handler(event, context):
         body = json.loads(event["body"])
         #body = event
         print(body["email"])
+        #check question and answer
         cursor.execute("select 1 from userQuestion where email = %s and answer = %s; ",(body["email"],body["answer"]))
         result = cursor.fetchone()
         if result is not None:
@@ -81,7 +84,7 @@ def lambda_handler(event, context):
         db = pymysql.connect("serverless-proj-user-management.c9hmikqpysoi.us-east-1.rds.amazonaws.com","root","mypassword","serverless" )
         cursor = db.cursor()
         body = json.loads(event["body"])
-        #body = event
+        #get users from online table who are from the same organization
         cursor.execute("select u.email,firstname, secondname from user u, userOnline o where u.email = o.email and u.organization = %s; ",(body["organization"]))
         result = cursor.fetchall()
         online =[];
@@ -106,7 +109,7 @@ cursor = db.cursor()
 
 def lambda_handler(event, context):
         body = json.loads(event["body"])
-        #body = event
+        #log users out by deleting them from table
         cursor.execute("delete from userOnline where email = %s; ",(body["email"]))
         db.commit()
         return {

@@ -14,18 +14,21 @@ def hello_world(request):
         sign_up_details['email'] = request_json['email']
         sign_up_details['password'] = request_json['password']
         sign_up_details['returnSecureToken']=False;
+        #check if user exists
         cursor.execute("select * from user where email=%s",(sign_up_details['email']))
         result=cursor.fetchone()
         if result is None:
             print("not present")
+            #insert into MYSQL
             cursor.execute("INSERT INTO user (`email`,`password`,`firstname`,`secondname`,`organization`)VALUES(%s,%s,%s,%s,%s);",(sign_up_details['email'],
             sign_up_details['password'],request_json['firstName'],request_json['secondName'],request_json['organization']))
             database.commit()
             cursor.execute("INSERT INTO `userQuestion`(`email`,`questionID`,`answer`)VALUES(%s,%s,%s);",(sign_up_details['email'],
             request_json['questionID'],request_json['answer']))
             database.commit()
-            url="https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAj4IznEqz1x1UCb5SohK4Kh9pYEWhlvx8"
-            x = requests.post(url, data = json.dumps(sign_up_details))
+            #firebase registration
+            Firebaseurl="https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAj4IznEqz1x1UCb5SohK4Kh9pYEWhlvx8"
+            requests.post(url, data = json.dumps(sign_up_details))
             return ("True");
         else:
             print("User already exists")
