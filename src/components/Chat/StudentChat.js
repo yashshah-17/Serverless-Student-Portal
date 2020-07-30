@@ -1,8 +1,9 @@
 import React from "react";
-import { ChatFeed, Message } from 'react-chat-ui'
 import "./StudentChat.css"
 import { InputGroup, FormControl, Button } from "react-bootstrap";
 import NavHeader from "../Navbar/NavHeader";
+// library for displaying messages
+import { ChatFeed, Message } from 'react-chat-ui'
 
 class StudentChat extends React.Component {
 
@@ -12,19 +13,21 @@ class StudentChat extends React.Component {
       messages: [],
       inputText: ""
     };
-    this.university = localStorage.getItem("organization") || "dalhousie";
-    this.username =  localStorage.getItem("firstName") || "annoy";
+    this.university = localStorage.getItem("organization");
+    this.username =  localStorage.getItem("firstName") || "annoyomous";
     this.intervalVar = null;
   }
 
   componentDidMount() {
-    this.intervalVar = setInterval(this.receive, 1000);
+    // get new messages call every 2 seconds
+    this.intervalVar = setInterval(this.receive, 2000);
   }
 
   componentWillUnmount() {
     clearInterval(this.intervalVar)
   }
 
+  // POST call for sending message
   sendMessage = event => {
     const requestOptionsPost = {
       method: 'POST',
@@ -40,13 +43,14 @@ class StudentChat extends React.Component {
         }
       })
     };
-
-    fetch('https://us-central1-avid-garage-282122.cloudfunctions.net/pubsub_message_post_and_retrieve', requestOptionsPost)
+    fetch('https://us-central1-avid-garage-282122.cloudfunctions.net/pubsub_message_post_and_retrieve'
+    , requestOptionsPost)
       .then(response => response.json())
       .then(data => console.log(data));
       this.setState({inputText: ""})
     };
 
+  // GET to fetch messages
   receive = event => {
     fetch('https://us-central1-avid-garage-282122.cloudfunctions.net/pubsub_message_post_and_retrieve?type=allMessages&university='
      + this.university)

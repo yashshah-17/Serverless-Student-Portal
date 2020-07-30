@@ -4,9 +4,10 @@ import { ChatBot, AmplifyTheme } from "aws-amplify-react";
 import awsconfig from "../../aws-exports";
 import NavHeader from "../Navbar/NavHeader";
 
+// config to access lex
 Amplify.configure(awsconfig);
 
-// Imported default theme can be customized by overloading attributes
+// Imported default theme. changes background color for header
 const myTheme = {
   ...AmplifyTheme,
   sectionHeader: {
@@ -16,10 +17,12 @@ const myTheme = {
 };
 
 export default function () {
+  
+  // handle completion event
   const handleComplete = (err, confirmation) => {
     if (err) {
       alert(
-        "Bot conversation failed, please check your network and try again."
+        "Bot conversation failed, please check your network or contact us if problem presists."
       );
       return;
     } else {
